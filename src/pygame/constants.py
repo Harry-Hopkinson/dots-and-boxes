@@ -1,0 +1,2 @@
+HEIGHT = 800
+WIDTH = 800
