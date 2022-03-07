@@ -30,3 +30,10 @@
 # v
 # x-axis
 #
+
+
+# o---o   o    [  [ True, False ],
+# |               [ True, False, False],
+# o   o---o       [ False, True ],
+#     |           [ False, True, False],
+# o---o---o       [ True, True]           ]
