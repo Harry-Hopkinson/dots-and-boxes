@@ -1,13 +1,3 @@
-size_of_board = 600
-number_of_dots = 6
-symbol_size = (size_of_board / 3 - size_of_board / 8) / 2
-symbol_thickness = 50
-dot_colour = "#7BC043"
-player1_colour = "#0492CF"
-player1_colour_light = "#67B0CF"
-player2_colour = "#EE4035"
-player2_colour_light = "#EE7E77"
-Green_colour = "#7BC043"
-dot_width = 0.25 * size_of_board / number_of_dots
-edge_width = 0.1 * size_of_board / number_of_dots
-distance_between_dots = size_of_board / (number_of_dots)
+PLAYER1 = -1
+PLAYER2 = 1
+PLAYERS = {"B": -1, "W": 1}
