@@ -8,6 +8,7 @@ board = [
     [0, 0, 0, 0, 0],
 ]
 
+
 class Game(object):
     def __init__(self):
         self.board = [
@@ -30,12 +31,10 @@ class Game(object):
             print()
         print(hash)
 
-
     def resetBoard(self, board):
         for i in range(len(board)):
             for j in range(len(board[i])):
                 board[i][j] = 0
-
 
     def play(self, board, player, i, j):
         if i < 0 or i > 4 or j < 0 or j > 4:
@@ -50,14 +49,12 @@ class Game(object):
         else:
             return False
 
-
     def endGame(self, board):
         for i in range(len(board)):
             for j in range(len(board[i])):
                 if board[i][j] == 0:
                     return False
         return True
-
 
     def checkWin(self, board, player):
         for i in range(len(board)):
@@ -93,14 +90,12 @@ class Game(object):
                             return True
         return False
 
-
     def checkDraw(self, board):
         for i in range(len(board)):
             for j in range(len(board[i])):
                 if board[i][j] == 0:
                     return False
         return True
-
 
     def playerOneMove(self, board):
         while True:
@@ -120,7 +115,6 @@ class Game(object):
             return True
         else:
             return False
-
 
     def playerTwoMove(self, board):
         while True:

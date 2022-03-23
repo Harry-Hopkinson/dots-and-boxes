@@ -13,6 +13,7 @@ def printBoard(board):
         print()
     print(hash)
 
+
 def resetBoard(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
