@@ -19,6 +19,12 @@ board = [
 ]
 
 
+def resetBoard(board):
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            board[i][j] = 0
+
+
 def play(board, player, i, j):
     if i < 0 or i > 4 or j < 0 or j > 4:
         return False
@@ -32,26 +38,105 @@ def play(board, player, i, j):
     else:
         return False
 
+
 def endGame(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
             if board[i][j] == 0:
                 return False
     return True
-    
-while True:
-    endGame(board)
-    printBoard(board)
-    print("Player 1:")
-    i = int(input("Row: "))
-    j = int(input("Column: "))
-    endGame(board)
-    if play(board, 1, i, j):
-        print("Player 2:")
-        i = int(input("Row: "))
-        j = int(input("Column: "))
-        if play(board, -1, i, j):
-            pass
-    else:
-        print("Invalid move")
 
+
+def checkWin(board, player):
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j] == player:
+                if i + 3 < len(board):
+                    if (
+                        board[i + 1][j] == player
+                        and board[i + 2][j] == player
+                        and board[i + 3][j] == player
+                    ):
+                        return True
+                if j + 3 < len(board[i]):
+                    if (
+                        board[i][j + 1] == player
+                        and board[i][j + 2] == player
+                        and board[i][j + 3] == player
+                    ):
+                        return True
+                if i + 3 < len(board) and j + 3 < len(board[i]):
+                    if (
+                        board[i + 1][j + 1] == player
+                        and board[i + 2][j + 2] == player
+                        and board[i + 3][j + 3] == player
+                    ):
+                        return True
+                if i - 3 >= 0 and j + 3 < len(board[i]):
+                    if (
+                        board[i - 1][j + 1] == player
+                        and board[i - 2][j + 2] == player
+                        and board[i - 3][j + 3] == player
+                    ):
+                        return True
+    return False
+
+
+def checkDraw(board):
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if board[i][j] == 0:
+                return False
+    return True
+
+
+def playerOneMove(board):
+    while True:
+        i = int(input("Enter row: "))
+        j = int(input("Enter column: "))
+        if play(board, 1, i, j):
+            break
+        else:
+            print("Invalid move")
+    printBoard(board)
+    if checkWin(board, 1):
+        print("Player 1 wins")
+        return True
+    elif checkDraw(board):
+        print("Draw")
+        return True
+    else:
+        return False
+
+
+def playerTwoMove(board):
+    while True:
+        i = int(input("Enter row: "))
+        j = int(input("Enter column: "))
+        if play(board, -1, i, j):
+            break
+        else:
+            print("Invalid move")
+    printBoard(board)
+    if checkWin(board, -1):
+        print("Player 2 wins")
+        return True
+    elif checkDraw(board):
+        print("Draw")
+        return True
+    else:
+        return False
+
+
+while True:
+    printBoard(board)
+    if playerOneMove(board):
+        break
+    if playerTwoMove(board):
+        break
+
+playAgain = input("Play again? (y/n): ")
+if playAgain == "y":
+    resetBoard(board)
+
+print("Thanks for playing!")
