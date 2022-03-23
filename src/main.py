@@ -1,3 +1,5 @@
+from constants import *
+
 def printBoard(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -8,6 +10,7 @@ def printBoard(board):
             elif board[i][j] == -1:
                 print("o", end="")
         print()
+    print(hash)
 
 
 board = [
@@ -101,6 +104,7 @@ def playerOneMove(board):
     printBoard(board)
     if checkWin(board, 1):
         print("Player 1 wins")
+        printBoard(board)
         return True
     elif checkDraw(board):
         print("Draw")
@@ -120,6 +124,7 @@ def playerTwoMove(board):
     printBoard(board)
     if checkWin(board, -1):
         print("Player 2 wins")
+        printBoard(board)
         return True
     elif checkDraw(board):
         print("Draw")
@@ -127,16 +132,18 @@ def playerTwoMove(board):
     else:
         return False
 
+running = True
 
-while True:
+while running:
     printBoard(board)
     if playerOneMove(board):
-        break
+        running = False
     if playerTwoMove(board):
-        break
+        running = False
 
 playAgain = input("Play again? (y/n): ")
 if playAgain == "y":
     resetBoard(board)
+    running = True
 
 print("Thanks for playing!")
