@@ -1,5 +1,6 @@
 from constants import *
 
+
 def printBoard(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -131,6 +132,7 @@ def playerTwoMove(board):
         return True
     else:
         return False
+
 
 running = True
 
