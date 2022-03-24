@@ -9,7 +9,7 @@ board = [
 ]
 
 
-class Game(object):
+class game(object):
     def __init__(self):
         self.board = [
             [0, 0, 0, 0, 0],
@@ -18,6 +18,7 @@ class Game(object):
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0],
         ]
+        self.gameOver = False
 
     def printBoard(self, board):
         for i in range(len(board)):
@@ -29,6 +30,9 @@ class Game(object):
                 elif board[i][j] == -1:
                     print("o", end="")
             print()
+        if game.gameOver:
+            print("Game Over")
+            return False
         print(hash)
 
     def resetBoard(self, board):
@@ -49,7 +53,7 @@ class Game(object):
         else:
             return False
 
-    def endGame(self, board):
+    def endgame(self, board):
         for i in range(len(board)):
             for j in range(len(board[i])):
                 if board[i][j] == 0:
@@ -101,16 +105,16 @@ class Game(object):
         while True:
             i = int(input("Enter row: "))
             j = int(input("Enter column: "))
-            if play(board, 1, i, j):
+            if game.play(board, 1, i, j):
                 break
             else:
                 print("Invalid move")
-        printBoard(board)
-        if checkWin(board, 1):
+        game.printBoard(board)
+        if game.checkWin(board, 1):
             print("Player 1 wins")
-            printBoard(board)
+            game.printBoard(board)
             return True
-        elif checkDraw(board):
+        elif game.checkDraw(board):
             print("Draw")
             return True
         else:
@@ -120,16 +124,16 @@ class Game(object):
         while True:
             i = int(input("Enter row: "))
             j = int(input("Enter column: "))
-            if play(board, -1, i, j):
+            if game.play(board, -1, i, j):
                 break
             else:
                 print("Invalid move")
-        printBoard(board)
-        if checkWin(board, -1):
+        game.printBoard(board)
+        if game.checkWin(board, -1):
             print("Player 2 wins")
-            printBoard(board)
+            game.printBoard(board)
             return True
-        elif checkDraw(board):
+        elif game.checkDraw(board):
             print("Draw")
             return True
         else:
@@ -137,17 +141,18 @@ class Game(object):
 
 
 running = True
+game = game()
 
 while running:
-    Game.printBoard(board)
-    if Game.playerOneMove(board):
+    game.printBoard(board)
+    if game.playerOneMove(board):
         running = False
-    if Game.playerTwoMove(board):
+    if game.playerTwoMove(board):
         running = False
 
 playAgain = input("Play again? (y/n): ")
 if playAgain == "y":
-    Game.resetBoard(board)
+    game.resetBoard(board)
     running = True
 
 print("Thanks for playing!")

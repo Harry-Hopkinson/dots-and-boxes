@@ -1,4 +1,3 @@
-from board import *
 from checkDraw import *
 from checkWin import *
 from constants import *
@@ -7,6 +6,8 @@ from play import *
 from playAgain import *
 from playerOneMove import *
 from playerTwoMove import *
+from board import *
+from printBoard import *
 
 board = [
     [0, 0, 0, 0, 0],
@@ -16,15 +17,11 @@ board = [
     [0, 0, 0, 0, 0],
 ]
 
-running = True
-
-while running:
+while True:
     printBoard(board)
     if playerOneMove(board):
-        running = False
+        break
     if playerTwoMove(board):
-        running = False
-
-playAgain()
+        break
 
 print("Thanks for playing!")
