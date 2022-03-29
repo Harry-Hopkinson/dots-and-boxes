@@ -9,7 +9,7 @@ board = [
 ]
 
 
-class Game:
+class Game():
     def __init__(self):
         self.gameOver = False
 
@@ -26,6 +26,7 @@ class Game:
         if game.gameOver:
             print("Game Over")
             return False
+       
 
     def resetBoard(self, board):
         for i in range(len(board)):
@@ -134,17 +135,19 @@ class Game:
 running = True
 game = Game()
 
-
-while running:
-    game.printBoard(board)
-    if game.playerOneMove(board):
-        running = False
-    if game.playerTwoMove(board):
+def main():
+    while running:
+        game.printBoard(board)
+        while not game.endgame(board):
+            if game.playerOneMove(board):
+                break
+            if game.playerTwoMove(board):
+                break
         running = False
 
 playAgain = input("Play again? (y/n): ")
 if playAgain == "y":
     game.resetBoard(board)
-    running = True
+    main()
 
 print("Thanks for playing!")
