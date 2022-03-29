@@ -9,15 +9,8 @@ board = [
 ]
 
 
-class game(object):
+class Game():
     def __init__(self):
-        self.board = [
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-        ]
         self.gameOver = False
 
     def printBoard(self, board):
@@ -33,7 +26,7 @@ class game(object):
         if game.gameOver:
             print("Game Over")
             return False
-        print(hash)
+       
 
     def resetBoard(self, board):
         for i in range(len(board)):
@@ -128,7 +121,6 @@ class game(object):
                 break
             else:
                 print("Invalid move")
-        game.printBoard(board)
         if game.checkWin(board, -1):
             print("Player 2 wins")
             game.printBoard(board)
@@ -141,7 +133,8 @@ class game(object):
 
 
 running = True
-game = game()
+game = Game()
+
 
 while running:
     game.printBoard(board)
