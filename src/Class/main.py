@@ -9,7 +9,7 @@ board = [
 ]
 
 
-class Game():
+class Game:
     def __init__(self):
         self.gameOver = False
 
@@ -26,7 +26,6 @@ class Game():
         if game.gameOver:
             print("Game Over")
             return False
-       
 
     def resetBoard(self, board):
         for i in range(len(board)):
