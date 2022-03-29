@@ -121,6 +121,7 @@ class Game():
                 break
             else:
                 print("Invalid move")
+        game.printBoard(board)
         if game.checkWin(board, -1):
             print("Player 2 wins")
             game.printBoard(board)
@@ -136,6 +137,7 @@ running = True
 game = Game()
 
 def main():
+    global running
     while running:
         game.printBoard(board)
         while not game.endgame(board):
@@ -145,6 +147,7 @@ def main():
                 break
         running = False
 
+main()
 playAgain = input("Play again? (y/n): ")
 if playAgain == "y":
     game.resetBoard(board)
