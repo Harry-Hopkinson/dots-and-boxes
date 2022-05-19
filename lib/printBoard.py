@@ -1,12 +1,12 @@
-from checkDraw import *
-from checkWin import *
-from constants import *
-from endGame import *
-from play import *
-from playAgain import *
-from playerOneMove import *
-from playerTwoMove import *
-from board import *
+from .checkDraw import *
+from .checkWin import *
+from .constants import *
+from .endGame import *
+from .play import *
+from .playAgain import *
+from .playerOneMove import *
+from .playerTwoMove import *
+from .board import *
 
 
 def printBoard(board):
