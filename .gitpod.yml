@@ -1,9 +1,11 @@
 tasks:
-    - init: |
-          echo 'Initialising Project'
-      command: |
-          echo 'Commanding Project'
+  - init: |
+      echo 'Initialising Project'
+    command: |
+      echo 'Commanding Project'
 vscode:
-    extensions:
-        - ms-python.python
-        - ms-toolsai.jupyter
+  extensions:
+    - ms-python.python
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers

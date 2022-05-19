@@ -9,7 +9,7 @@ board = [
 ]
 
 
-class Game():
+class Game:
     def __init__(self):
         self.gameOver = False
 
@@ -23,10 +23,10 @@ class Game():
                 elif board[i][j] == -1:
                     print("o", end="")
             print()
+        print(hash)
         if game.gameOver:
             print("Game Over")
             return False
-       
 
     def resetBoard(self, board):
         for i in range(len(board)):
@@ -136,6 +136,7 @@ class Game():
 running = True
 game = Game()
 
+
 def main():
     global running
     while running:
@@ -147,9 +148,11 @@ def main():
                 break
         running = False
 
+
 main()
 playAgain = input("Play again? (y/n): ")
-if playAgain == "y":
+if playAgain.lower() == "y" or playAgain.lower() == "yes":
+    running = True
     game.resetBoard(board)
     main()
 
